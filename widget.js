@@ -1,6 +1,6 @@
 // RSS Ticker Widget
 // This script creates a simple RSS feed ticker widget that can be embedded in Notion or other platforms.
-// It supports URL parameters for RSS feed URL, background color, font color, and scroll speed.
+// It supports URL parameters for RSS feed URL, background color, font color, scroll speed, and font size.
 
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -8,6 +8,7 @@ const feedUrl = urlParams.get('feed') || 'https://example.com/rss';
 const bgColor = urlParams.get('bgColor') || '#000';
 const fontColor = urlParams.get('fontColor') || '#fff';
 const scrollSpeed = parseInt(urlParams.get('speed'), 10) || 10; // Default speed of 10 seconds
+const fontSize = parseInt(urlParams.get('fontSize'), 10) || 16; // Default font size of 16px
 
 const container = document.createElement('div');
 container.style.position = 'fixed';
@@ -17,8 +18,8 @@ container.style.backgroundColor = bgColor;
 container.style.color = fontColor;
 container.style.whiteSpace = 'nowrap';
 container.style.overflow = 'hidden';
-container.style.fontSize = '16px';
-container.style.lineHeight = '30px';
+container.style.fontSize = `${fontSize}px`;
+container.style.lineHeight = `${fontSize * 2}px`;
 container.style.fontFamily = 'Arial, sans-serif';
 
 const tickerContent = document.createElement('div');

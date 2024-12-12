@@ -25,6 +25,7 @@ container.style.fontFamily = 'Arial, sans-serif';
 const tickerContent = document.createElement('div');
 tickerContent.style.display = 'inline-block';
 tickerContent.style.animation = `scroll-left ${scrollSpeed}s linear infinite`;
+tickerContent.innerHTML = '<span>Loading...</span>';
 
 container.appendChild(tickerContent);
 document.body.appendChild(container);
@@ -56,4 +57,9 @@ async function fetchRSS() {
     }
 }
 
-fetchRSS();
+function refreshRSS() {
+    fetchRSS();
+    setInterval(fetchRSS, 3600000); // Refresh every hour
+}
+
+refreshRSS();
